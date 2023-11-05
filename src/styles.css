@@ -1,0 +1,20 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap');
+
+:root {
+  --primary-c: #1d2b05;
+  --secondary-c: #628f12;
+  --terciary-c: #7ab317;
+}
+
+body {
+  font-family: 'Roboto';
+  padding: 0px;
+  margin: 0px;
+  border: 0px;
+}
+
+.p-m-b-0 {
+  padding: 0px;
+  margin: 0px;
+  border: 0px;
+}

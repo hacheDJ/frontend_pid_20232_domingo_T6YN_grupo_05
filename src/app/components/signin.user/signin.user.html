@@ -1,0 +1,15 @@
+<div class="login-container">
+    <div class="login-box">
+      <h2>Iniciar Sesión</h2>
+      <form>
+        <div class="input-group">
+          <input matInput id="username" name="username" placeholder="Nombre de Usuario" [(ngModel)]="userSignInRequest.userLogin" required>
+        </div>
+        <div class="input-group">
+          <input matInput  type="password" id="password" name="password" placeholder="Contraseña" [(ngModel)]="userSignInRequest.passwordLogin" required>
+        </div>
+        <button type="submit" (click)="signInn()">Ingresar</button>
+      </form>
+    </div>
+  </div>
+  

@@ -1,0 +1,62 @@
+<div class="registro-container">
+    <h2>Registro de Usuario</h2>
+    <form (ngSubmit)="registerr()">
+      <div class="form-group">
+        <label for="nombre">Nombre:</label>
+        <input type="text" id="nombre" name="nombre" [(ngModel)]="userLenderBoss.namesUser" required>
+      </div>
+  
+      <div class="form-group">
+        <label for="apePat">Apellido paterno:</label>
+        <input type="text" id="apePat" name="apePat" [(ngModel)]="userLenderBoss.lastnameP" required>
+      </div>
+  
+      <div class="form-group">
+        <label for="apeMat">Apellido materno:</label>
+        <input type="text" id="apeMat" name="apeMat" [(ngModel)]="userLenderBoss.lastnameM" required>
+      </div>
+
+      <div class="form-group">
+        <label for="dirección">Dirección:</label>
+        <input type="text" id="dirección" name="direccion" [(ngModel)]="userLenderBoss.address" required>
+      </div>
+  
+      <div class="form-group">
+        <label for="celular">Celular:</label>
+        <input type="text" id="celular" name="celular" [(ngModel)]="userLenderBoss.cellphone" required>
+      </div>
+  
+      <div class="form-group">
+        <label for="correo">Correo:</label>
+        <input type="email" id="correo" name="correo" [(ngModel)]="userLenderBoss.email" required>
+      </div>
+
+      <div class="form-group">
+        <label for="username">Username:</label>
+        <input type="text" id="username" name="username" [(ngModel)]="userLenderBoss.userLogin" required>
+      </div>
+  
+      <div class="form-group">
+        <label for="contrasena">Contraseña:</label>
+        <input type="password" id="contrasena" name="contrasena" [(ngModel)]="userLenderBoss.passwordLogin" required>
+      </div>
+  
+      <div class="form-group">
+        <label for="nacimiento">Fecha de nacimiento:</label>
+        <input type="date" id="nacimiento" name="nacimiento" [(ngModel)]="userLenderBoss.dateBirth" required>
+      </div>
+
+      <div class="form-group">
+        <label>Tipo de codumento</label>
+        <mat-select [(ngModel)]="userLenderBoss.idDocType!.id">
+            <option value="-1">Selecciona</option>
+            <option *ngFor="let x of lstDoc" [value]="x.id">
+                {{x.nameDocType}}
+            </option>
+        </mat-select>
+      </div>
+  
+      <button type="submit">Registrar</button>
+    </form>
+  </div>
+  

@@ -1,0 +1,38 @@
+body {
+    font-family: 'Roboto Slab', serif;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Roboto Slab', serif;
+}
+
+.header {
+    background-color: #00447c; /* Color de fondo del encabezado (puede variar) */
+    color: #fff; /* Color de texto en el encabezado */
+    padding: 10px 0; /* Espaciado interno superior e inferior */
+    text-align: center; /* Alineación del contenido en el centro */
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2); /* Sombra ligera */
+  }
+  
+  .header h1 {
+    font-size: 28px; /* Tamaño del título */
+    margin: 0; /* Eliminar margen superior e inferior */
+  }
+  
+  .nav-bar {
+    background-color: #003366; /* Color de fondo de la barra de navegación */
+    text-align: center; /* Alineación del texto en la barra de navegación */
+  }
+  
+  .nav-bar a {
+    color: #fff; /* Color del texto en los enlaces de navegación */
+    text-decoration: none; /* Eliminar subrayado de los enlaces */
+    margin: 0 15px; /* Espaciado entre los enlaces de navegación */
+  }
+  
+  .nav-bar a:hover {
+    text-decoration: underline; /* Subrayado en el enlace al pasar el mouse */
+  }
+  .logo{
+    width: 20%;
+  }

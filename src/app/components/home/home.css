@@ -1,0 +1,69 @@
+html{
+	height: 100%;
+}
+
+#root{
+  display: grid;
+  min-height: 100%;
+  grid-template:
+  "header header"	 auto
+  "nav    nav"	 	 auto
+  "login  aside"	 510px
+  "footer footer"   /
+  50%     50%;
+}
+.header {
+    background-color: var(--secondary-c);
+    color: #fff;
+    padding: 10px 0 0 0;
+    text-align: center;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);
+    grid-area: header;
+  }
+  
+  .header h1 {
+    font-size: 35pt;
+    margin: 0px;
+  }
+  
+  .nav-bar {
+    background-color: var(--primary-c);
+    text-align: center;
+    grid-area: nav;
+  }
+  
+  .nav-bar a {
+    color: #fff;
+    text-decoration: none;
+    margin: 0 15px;
+  }
+  
+  .nav-bar a:hover {
+    color: var(--terciary-c)
+  }
+  .logo{
+    width: 250px;
+  }
+
+.inLine{
+  list-style: none;
+}
+.inLine li{
+  display: inline-block;
+  padding: 10px 0px;
+}
+#login{
+  display: flex;
+  justify-content: center;
+  background-color: aquamarine;
+  /*height: calc(100vh - 248px) ;*/
+  grid-area: login;
+}
+#aside{
+  grid-area: aside;
+}
+
+footer{
+  background-color: yellow;
+  grid-area: footer;
+}
