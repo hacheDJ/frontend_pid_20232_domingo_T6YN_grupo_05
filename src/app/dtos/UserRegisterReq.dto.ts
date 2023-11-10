@@ -1,8 +1,8 @@
-import { DocumentType } from "./documentType.model";
-import { Group } from "./group.model";
+import { DocumentType } from "../models/documentType.model";
+import { Group } from "../models/group.model";
 
-export class User{
-	id?: number;
+export class UserRegisterReq {
+    id?: number;
     namesUser?: string;
     lastnameP?: string;
     lastnameM?: string;;
@@ -12,6 +12,7 @@ export class User{
     email?: string;
     userLogin?: string;
     passwordLogin?: string;
+    confirmPasswordLogin?: string;
     dateBirth?: Date | null;
     numberDoc?: string;
     idDocType?: DocumentType;

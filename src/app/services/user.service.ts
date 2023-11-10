@@ -2,7 +2,7 @@ import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { Observable } from "rxjs";
 import { AppSettings } from "../app.settings";
-import { UserSignInRequest } from "../dtos/UserSignInRequest.dto";
+import { UserToEditReq } from "../dtos/UserToEditReq.dto";
 import { User } from "../models/user.model";
 
 const adminUrl = `${AppSettings.API_ENDPOINT}/admin`;
@@ -20,7 +20,15 @@ export class UserService {
     }
 
     update(data: User): Observable<any> {
-        return this.httpClient.put(adminUrl, data);
+        return this.httpClient.patch(adminUrl, data);
+    }
+
+    findUserToEdit(data: UserToEditReq): Observable<any> {
+        return this.httpClient.post(`${adminUrl}/findUserToEdit`, data);
+    }
+
+    findUserLenderToEditByGroup(data: UserToEditReq): Observable<any> {
+        return this.httpClient.post(`${adminUrl}/listUserByRoleForUpdateLender`, data);
     }
 
 }

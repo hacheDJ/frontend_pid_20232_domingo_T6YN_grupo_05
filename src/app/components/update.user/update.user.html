@@ -1,0 +1,74 @@
+<div class="registro-container">
+    <div [formGroup]="myFormEdit" [ngSwitch]="roleUser">
+        <h2>Editar Usuario</h2>
+        <div class="form-group">
+          <label>Usuario: </label>
+          <select formControlName="id" [(ngModel)]="userRegisterReq.id" (change)="onSelectChange($event)">
+              <option value="-1">Selecciona</option>
+              <option *ngFor="let item of showListUsers" [value]="item.id">
+                {{item.nameComplete}}
+              </option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label for="namesUser">Nombre:</label>
+          <input formControlName="namesUser" type="text" id="namesUser" name="namesUser" [(ngModel)]="userRegisterReq.namesUser"   required>
+          <label for="lastnameP">Apellido paterno:</label>
+          <input formControlName="lastnameP" type="text" id="lastnameP" name="lastnameP" [(ngModel)]="userRegisterReq.lastnameP"  required>
+          <label for="lastnameM">Apellido materno:</label>
+          <input formControlName="lastnameM" type="text" id="lastnameM" name="lastnameM" [(ngModel)]="userRegisterReq.lastnameM"  required>
+        </div>
+  
+        <div class="form-group">
+          <label for="address">Dirección:</label>
+          <input formControlName="address" type="text" id="address" name="address" [(ngModel)]="userRegisterReq.address"  required>
+          <label for="cellphone">Celular:</label>
+          <input formControlName="cellphone" type="text" id="cellphone" name="cellphone" [(ngModel)]="userRegisterReq.cellphone"  required>
+          <label for="email">Correo:</label>
+          <input formControlName="email" type="email" id="email" name="email" [(ngModel)]="userRegisterReq.email"  required>
+        </div>
+  
+        <div class="form-group">
+          <label for="userLogin">Username:</label>
+          <input formControlName="userLogin" type="text" id="userLogin" name="userLogin" [(ngModel)]="userRegisterReq.userLogin"  required>
+          <label for="passwordLogin">Contraseña:</label>
+          <input formControlName="passwordLogin" type="password" id="passwordLogin" name="passwordLogin" [(ngModel)]="userRegisterReq.passwordLogin"  (input)="onInputChange($event)" required>
+          <label for="confirmPassword">Confirmar contraseña:</label>
+          <input formControlName="confirmPasswordLogin" type="password" id="confirmPasswordLogin" name="confirmPasswordLogin" [(ngModel)]="userRegisterReq.confirmPasswordLogin" required>
+        </div>
+  
+        <div class="form-group">
+          <label for="dateBirth">Fecha de nacimiento:</label>
+          <input #dateBirdtInput formControlName="dateBirth" type="date" id="dateBirth" name="dateBirth" [value]="userRegisterReq.dateBirth" [(ngModel)]="userRegisterReq.dateBirth"  required>
+          <label for="numberDoc">Número de documento:</label>
+          <input formControlName="numberDoc" type="number" id="numberDoc" name="numberDoc" [(ngModel)]="userRegisterReq.numberDoc"  required>
+          <label>Tipo de codumento: </label>
+          <select formControlName="idDocType" [(ngModel)]="userRegisterReq.idDocType!.id" >
+              <option value="-1">Selecciona</option>
+              <option *ngFor="let item of lstDoc" [value]="item.id">
+                  {{item.nameDocType}}
+              </option>
+          </select>
+        </div>
+  
+        <div class="form-group" *ngSwitchCase="lstRoles[1]">
+          <label>Grupo: </label>
+            <select formControlName="idGroup" [(ngModel)]="userRegisterReq.idGroup!.id">
+              <option value="-1">Selecciona</option>
+              <option *ngFor="let item of lstGroup" [value]="item.id">
+                  {{item.description}}
+              </option>
+          </select>
+          <label>Rol: </label>
+          <select formControlName="role" [(ngModel)]="userRegisterReq.role">
+              <option value="-1">Selecciona</option>
+              <option value="LENDER_BOSS">Jefe de prestamista</option>
+              <option value="LENDER">Prestamista</option>
+          </select>
+        </div>
+    
+        <button type="submit" (click)="edit()">Editar</button>
+      </div>
+    </div>
+    
