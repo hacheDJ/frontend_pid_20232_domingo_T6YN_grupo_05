@@ -1,21 +1,63 @@
-<div id="root">
+<div id="root" [ngClass]="{'root-login': isAuth, 'root': !isAuth}">
     <header class="header">
         <img src="../assets/img/logo.png" alt="Logotipo de la empresa" class="logo">
         <h1 class="title">El Ekeko Fast Cash</h1>
-        
     </header>
     <nav class="nav-bar">
         <ul class="inLine p-m-b-0">
             <li class="p-m-b-0"><a href="#" class="nav-link">Inicio</a></li>
-            <li class="p-m-b-0"><a href="#" class="nav-link">Acerca de</a></li>
-            <li class="p-m-b-0"><a routerLink="/showInsertLenderBoss" class="nav-link">Agregar Jefe de Pestamista</a></li>
-            <li class="p-m-b-0"><a routerLink="/showUpdateLenderBoss" class="nav-link">Actualizar Jefe de Pretamista</a></li>
-            <li class="p-m-b-0"><a routerLink="/showSignin" class="nav-link">Ingresar al sistema</a></li>
+            <li class="p-m-b-0"><a href="#" class="nav-link">Acerca de nosotros</a></li>
+            <li class="p-m-b-0"><a routerLink="/#" class="nav-link">Noticias</a></li>
+            <li class="p-m-b-0"><a routerLink="/#" class="nav-link">Blog El Ekeko Fast Cash</a></li>
+            <li class="p-m-b-0 link"><a (click)="logOut()" class="nav-link" *ngIf="isAuth">Cerrar Sesión</a></li>
         </ul>
     </nav>
-    <app-signin-user id="login"></app-signin-user>
-    <aside id="">dsdsds</aside>
+    <app-signin-user id="login" *ngIf="!isAuth; else options"></app-signin-user>
+    <ng-template id="menu" #options>
+        <div [ngSwitch]="roleUser">
+            <div class="button-list" *ngSwitchCase="lstRoles[0]">
+                <button class="button-item" (click)="loadComponent('InsertUser')">
+                    <img src="../../../assets/img/add_user_64.png" alt="new">
+                  </button>
+                  <button class="button-item" (click)="loadComponent('UpdateUser')">
+                    <img src="../../../assets/img/edit_user_64.png" alt="edit">
+                  </button>
+            </div>
+            <div class="button-list" *ngSwitchCase="lstRoles[1]">
+                <button class="button-item" (click)="loadComponent('InsertUser')">
+                    <img src="../../../assets/img/add_user_to_team_64.png" alt="new">
+                  </button>
+                  <button class="button-item" (click)="loadComponent('UpdateUser')">
+                    <img src="../../../assets/img/edit_user_from_team_64.png" alt="edit">
+                  </button>
+            </div>
+            <div class="button-list" *ngSwitchCase="lstRoles[2]">
+                <button class="button-item" (click)="loadComponent('InsertUser')">
+                    <img src="../../../assets/img/add_user_64.png" alt="new">
+                  </button>
+                  <button class="button-item" (click)="loadComponent('UpdateUser')">
+                    <img src="../../../assets/img/edit_user_64.png" alt="edit">
+                  </button>
+            </div>
+            <div class="button-list" *ngSwitchCase="lstRoles[3]">
+                <button class="button-item" (click)="loadComponent('InsertUser')">
+                    <img src="../../../assets/img/add_user_64.png" alt="new">
+                  </button>
+                  <button class="button-item" (click)="loadComponent('UpdateUser')">
+                    <img src="../../../assets/img/edit_user_64.png" alt="edit">
+                  </button>
+            </div>
+        </div>
+    </ng-template>
+    <aside id="aside">
+        <img src="../../../assets/img/advertising.jpg" alt="advertising" *ngIf="!isAuth; else asideLogin">
+        <ng-template #asideLogin>
+            <ng-container #dynamicComponentOutlet>
+
+            </ng-container>
+        </ng-template>
+    </aside>
     <footer>
-        afsdfsdfgsf
+        Copyright©2023 Grupo 5 Cibertec
     </footer>
 </div>

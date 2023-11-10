@@ -1,4 +1,9 @@
-import { Component } from '@angular/core';
+import { HttpRequest } from '@angular/common/http';
+import { Component, ComponentFactoryResolver, OnInit, ViewChild, ViewContainerRef } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
+import { InsertUser } from '../insert.user/insert.user';
+import { SigninUserComponent } from '../signin.user/signin.user';
+import { UpdateUser } from '../update.user/update.user';
 
 @Component({
   selector: 'app-home-lenderboss',
@@ -6,44 +11,66 @@ import { Component } from '@angular/core';
   styleUrls: ['./home.css']
 })
 
-export class Home {
-  /*lstDoc:DocumentType[] = [];
+export class Home  implements OnInit{
 
-  userLenderBoss: User = {
-    namesUser: "",
-    lastnameP: "",
-    lastnameM: "",
-    address: "",
-    cellphone: "",
-    email: "",
-    userLogin: "",
-    passwordLogin: "",
-    dateBirth: null,
-    idDocType: {
-      id: -1
-    }
-  };
+  isAuth = false
+  roleUser = ""
+  idUser = -1
+  idGroupUser = -1
 
-  objUser: User = {};
-  objRole: Role = {};
+  lstRoles: String[] = ["ADMIN", "LENDER_BOSS", "LENDER", "BORROWER"]
 
-  constructor(private userService: UserService, private utilService: UtilService) {
-    utilService.listDocuments().subscribe(
-      x => this.lstDoc = x
-    );
+  @ViewChild('dynamicComponentOutlet', { read: ViewContainerRef })
+  dynamicComponentOutlet!: ViewContainerRef;
 
-    this.objUser.id = 1;
-    this.objRole.id = 2
+  constructor(private componentFactoryResolver: ComponentFactoryResolver) {
+   
   }
 
-  registerr(){
-    this.userLenderBoss.registrationDate = new Date();
-    this.userLenderBoss.idRole = this.objRole;
-    this.userService.register(this.userLenderBoss).subscribe(
-      x => {
-        alert(x.message)
-      }
-    );
-  }*/
+  ngOnInit(): void {
+    if(localStorage.getItem("TOKEN")){
+      this.isAuth = true
+      this.roleUser = localStorage.getItem("ROLE_USER") ?? ""
+      this.idUser = parseInt(localStorage.getItem("ID_USER") ?? "-1")
+      this.idGroupUser = parseInt(localStorage.getItem("ID_GROUP_USER") ?? "-1")
+    }
+    
+    console.log("lstRoles---> ", this.lstRoles[0])
+    
+    console.log("--->isAuth ", this.isAuth)
+    console.log("--->roleUser ", this.roleUser)
+    console.log("--->idUser ", this.idUser)
+    console.log("--->idGroupUser ", this.idGroupUser)
+
+  }
+
+  loadComponent(componentName: any) {
+    this.dynamicComponentOutlet.clear();
+
+    let component: any;
+
+    if (componentName === 'UpdateUser') {
+      component = UpdateUser;
+    } else if (componentName === 'InsertUser') {
+      component = InsertUser;
+    }
+
+    const componentFactory = this.componentFactoryResolver.resolveComponentFactory(component);
+    const componentRef = componentFactory.create(this.dynamicComponentOutlet.parentInjector);
+    this.dynamicComponentOutlet.insert(componentRef.hostView);
+  }
+
+  logOut(){
+    localStorage.removeItem("TOKEN")
+    localStorage.removeItem("ROLE_USER")
+    localStorage.removeItem("ID_USER")
+    localStorage.removeItem("ID_GROUP_USER")
+    this.isAuth = false
+    this.roleUser = ""
+    this.idUser = -1
+    this.idGroupUser = -1
+
+    window.location.reload()
+  }
 
 }

@@ -2,16 +2,27 @@ html{
 	height: 100%;
 }
 
-#root{
+.root{
   display: grid;
   min-height: 100%;
   grid-template:
   "header header"	 auto
   "nav    nav"	 	 auto
-  "login  aside"	 510px
+  "login  aside"	 506px
   "footer footer"   /
   50%     50%;
 }
+.root-login{
+  display: grid;
+  min-height: 100%;
+  grid-template:
+  "header header"	 auto
+  "nav    nav"	 	 auto
+  "menu  aside"	 506px
+  "footer footer"   /
+  20%     80%;
+}
+
 .header {
     background-color: var(--secondary-c);
     color: #fff;
@@ -23,6 +34,7 @@ html{
   
   .header h1 {
     font-size: 35pt;
+    /*-webkit-text-stroke: 1px var(--purple-c);*/
     margin: 0px;
   }
   
@@ -55,15 +67,64 @@ html{
 #login{
   display: flex;
   justify-content: center;
-  background-color: aquamarine;
   /*height: calc(100vh - 248px) ;*/
   grid-area: login;
 }
+#menu{
+  grid-area: menu;
+}
 #aside{
   grid-area: aside;
+  overflow: hidden;
+  text-align: center;
+}
+
+#aside img{
+  width: 90%;
 }
 
 footer{
-  background-color: yellow;
+  background-color: var(--green-sl-c);
+  border-top: 5px solid var(--blue-b-c);
+  color: var(--purple-c);
+  text-align: center;
+  font-weight: bold;
   grid-area: footer;
+}
+.link{
+  cursor: pointer;
+}
+
+/**
+*menu de usuario logueado
+**/
+.button-list {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  gap: 10px;
+  padding-top: 15px;
+  align-items: center;
+}
+
+.button-item {
+  color: #fff;
+  border: 2px solid var(--green-sl-c);
+  padding: 10px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  width: 150px;
+  text-align: center;
+}
+
+.button-item:hover {
+  background-color: var(--primary-c);
+}
+
+.button-item img {
+  max-width: 80%;
+  max-height: 100px;
+  display: block;
+  margin: 0 auto;
 }

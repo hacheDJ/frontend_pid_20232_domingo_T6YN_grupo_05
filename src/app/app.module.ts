@@ -6,19 +6,19 @@ import { SigninUserComponent } from './components/signin.user/signin.user';
 import { AppRoutingModule } from './app-routing.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
-import { UpdateLenderBoss } from './components/update.lenderboss/update.lenderboss';
-import { InsertLenderBoss } from './components/insert.lenderboss/insert.lenderboss';
-import { AppMaterialModule } from './app.material.module';
+import { UpdateUser } from './components/update.user/update.user';
+import { InsertUser } from './components/insert.user/insert.user';
 import { Home } from './components/home/home';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { AuthInterceptor } from 'src/security/AuthInterceptor';
 
 @NgModule({
   declarations: [
     AppComponent,
     Home,
     SigninUserComponent,
-    UpdateLenderBoss,
-    InsertLenderBoss
+    UpdateUser,
+    InsertUser
   ],
   imports: [
     BrowserModule,
@@ -27,10 +27,9 @@ import { HttpClientModule } from '@angular/common/http';
     ReactiveFormsModule.withConfig({warnOnNgModelWithFormControl: 'never'}),
     ApplicationModule,
     CommonModule,
-    AppMaterialModule,
     HttpClientModule
   ],
-  providers: [],
+  providers: [{provide:HTTP_INTERCEPTORS, useClass:AuthInterceptor, multi:true}],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
