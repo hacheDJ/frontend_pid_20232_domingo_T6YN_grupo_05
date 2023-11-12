@@ -1,8 +1,9 @@
 import { HttpRequest } from '@angular/common/http';
 import { Component, ComponentFactoryResolver, OnInit, ViewChild, ViewContainerRef } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { InserRequestLoan } from '../insert.request.loan/insert.requestLoan';
+import { InsertRequestLoan } from '../insert.request.loan/insert.requestLoan';
 import { InsertUser } from '../insert.user/insert.user';
+import { ReadRequestLoan } from '../read.request.loan/read.request.loan';
 import { SigninUserComponent } from '../signin.user/signin.user';
 import { UpdateUser } from '../update.user/update.user';
 
@@ -57,7 +58,9 @@ export class Home  implements OnInit{
     } else if (componentName === 'InsertUser') {
       component = InsertUser;
     } else if (componentName === 'InserRequestLoan') {
-      component = InserRequestLoan;
+      component = InsertRequestLoan;
+    } else if (componentName === 'ReadRequestLoan') {
+      component = ReadRequestLoan;
     }
 
     const componentFactory = this.componentFactoryResolver.resolveComponentFactory(component);

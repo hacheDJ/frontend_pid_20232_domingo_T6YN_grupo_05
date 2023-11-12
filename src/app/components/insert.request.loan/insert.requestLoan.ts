@@ -15,7 +15,7 @@ import { InsertBankAccount } from '../insert.bank.account/insert.bank.account';
   styleUrls: ['./insert.requestLoan.css']
 })
 
-export class InserRequestLoan{
+export class InsertRequestLoan{
   
   lstLoanCategory: LoanCategory[] = []
   objUser: User = {}

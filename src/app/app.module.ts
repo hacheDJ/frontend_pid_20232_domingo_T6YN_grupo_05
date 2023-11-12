@@ -11,10 +11,11 @@ import { InsertUser } from './components/insert.user/insert.user';
 import { Home } from './components/home/home';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AuthInterceptor } from 'src/security/AuthInterceptor';
-import { InserRequestLoan } from './components/insert.request.loan/insert.requestLoan';
+import { InsertRequestLoan } from './components/insert.request.loan/insert.requestLoan';
 import { MatDialogModule, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { InsertBankAccount } from './components/insert.bank.account/insert.bank.account';
 import { OverlayModule } from '@angular/cdk/overlay';
+import { ReadRequestLoan } from './components/read.request.loan/read.request.loan';
 
 @NgModule({
   declarations: [
@@ -23,8 +24,9 @@ import { OverlayModule } from '@angular/cdk/overlay';
     SigninUserComponent,
     UpdateUser,
     InsertUser,
-    InserRequestLoan,
-    InsertBankAccount
+    InsertRequestLoan,
+    InsertBankAccount,
+    ReadRequestLoan
   ],
   imports: [
     BrowserModule,
@@ -34,7 +36,8 @@ import { OverlayModule } from '@angular/cdk/overlay';
     ApplicationModule,
     CommonModule,
     HttpClientModule,
-    MatDialogModule,
+    MatDialogModule
+    
     
   ],
   providers: [

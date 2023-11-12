@@ -1,0 +1,90 @@
+<div class="registro-container" >
+    <form>
+        <div>
+          <h2>Consulta de Solicitudes de Prestamos</h2>
+        </div>
+        <div class="form-group">
+          <label for="nombre">Prestatario:</label>
+          <select>
+            <option value="-1">Selecciona</option>
+            <option *ngFor="let item of lstBorrowerByLender" [value]="item.id">
+                {{item.namesUser}}
+            </option>
+        </select>
+        </div>
+  
+        <!-- <div class="form-group">
+          <label for="dirección">Dirección:</label>
+          <input type="text" id="dirección" name="direccion" [(ngModel)]="userRegisterReq.address" [ngModelOptions]="{standalone: true}" required>
+          <label for="celular">Celular:</label>
+          <input type="text" id="celular" name="celular" [(ngModel)]="userRegisterReq.cellphone" [ngModelOptions]="{standalone: true}" required>
+          <label for="correo">Correo:</label>
+          <input type="email" id="correo" name="correo" [(ngModel)]="userRegisterReq.email" [ngModelOptions]="{standalone: true}" required>
+        </div> -->
+  
+        <!-- <div class="form-group">
+          <label for="username">Username:</label>
+          <input type="text" id="username" name="username" [(ngModel)]="userRegisterReq.userLogin" [ngModelOptions]="{standalone: true}" required>
+          <label for="password">Contraseña:</label>
+          <input type="password" id="password" name="password" [(ngModel)]="userRegisterReq.passwordLogin" [ngModelOptions]="{standalone: true}" required>
+          <label for="confirmPassword">Confirmar contraseña:</label>
+          <input type="password" id="confirmPassword" name="confirmPassword" [(ngModel)]="userRegisterReq.confirmPasswordLogin" [ngModelOptions]="{standalone: true}" required>
+        </div> -->
+  
+        <div class="form-group">
+          <!-- <label for="dateBirth">Desde:</label>
+          <input type="date" id="dateBirth" name="dateBirth"  required>
+          <label for="dateBirth">Hasta:</label>
+          <input type="date" id="dateBirth" name="dateBirth"  required> -->
+          <!-- <label for="numberDoc">Número de documento:</label>
+          <input type="number" id="numberDoc" name="numberDoc" [(ngModel)]="userRegisterReq.numberDoc" [ngModelOptions]="{standalone: true}" required>
+          <label>Tipo de codumento: </label>
+          <select [(ngModel)]="userRegisterReq.idDocType!.id" [ngModelOptions]="{standalone: true}">
+              <option value="-1">Selecciona</option>
+              <option *ngFor="let item of lstDoc" [value]="item.id">
+                  {{item.nameDocType}}
+              </option>
+          </select> -->
+          <table class="custom-table">
+            <thead>
+              <tr>
+                <th>ID</th>
+                <th>Nombre</th>
+                <th>Edad</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr >
+                <td>dos</td>
+                <td>dos</td>
+                <td>tres</td>
+              </tr>
+              <!-- <tr *ngFor="let persona of personas">
+                <td>{{ persona.id }}</td>
+                <td>{{ persona.nombre }}</td>
+                <td>{{ persona.edad }}</td>
+              </tr> -->
+            </tbody>
+          </table>
+        </div>
+  
+        <!-- <div class="form-group" *ngSwitchCase="lstRoles[0]">
+          <label>Grupo: </label>
+          <select [(ngModel)]="userRegisterReq.idGroup!.id"  [ngModelOptions]="{standalone: true}">
+              <option value="-1">Selecciona</option>
+              <option *ngFor="let item of lstGroup" [value]="item.id">
+                  {{item.description}}
+              </option>
+          </select>
+          <label>Rol: </label>
+          <select [(ngModel)]="userRegisterReq.role"  [ngModelOptions]="{standalone: true}">
+              <option value="-1">Selecciona</option>
+              <option value="LENDER_BOSS">Jefe de prestamista</option>
+              <option value="LENDER">Prestamista</option>
+          </select>
+        </div> -->
+    
+        <button type="submit">Registrar</button>
+      </form>
+    </div>
+    
