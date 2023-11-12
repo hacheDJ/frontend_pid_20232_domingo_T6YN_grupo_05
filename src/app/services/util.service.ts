@@ -4,6 +4,7 @@ import { Observable } from 'rxjs';
 import { AppSettings } from '../app.settings';
 import { DocumentType } from '../models/documentType.model';
 import { Group } from '../models/group.model';
+import { LoanCategory } from '../models/loanCategory.model';
 import { User } from '../models/user.model';
 
 const ENPOINT_BASE = AppSettings.API_ENDPOINT;
@@ -25,6 +26,10 @@ export class UtilService {
 
   listGroups(): Observable<Group[]>{
     return this.http.get<Group[]>(`${ENPOINT_BASE}/group`);
+  }
+
+  listLoanCategories(): Observable<LoanCategory[]>{
+    return this.http.get<LoanCategory[]>(`${ENPOINT_BASE}/loanCategory`);
   }
 
 }

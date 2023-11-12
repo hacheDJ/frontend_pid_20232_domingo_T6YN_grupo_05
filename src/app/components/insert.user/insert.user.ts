@@ -14,6 +14,7 @@ import { Group } from 'src/app/models/group.model';
 export class InsertUser {
   lstRoles: String[] = ["ADMIN", "LENDER_BOSS", "LENDER", "BORROWER"]
   roleUser = localStorage.getItem("ROLE_USER")
+  idGroupUser = parseInt(localStorage.getItem("ID_GROUP_USER") ?? "-1")
 
   lstDoc:DocumentType[] = [];
   lstGroup:Group[] = [];

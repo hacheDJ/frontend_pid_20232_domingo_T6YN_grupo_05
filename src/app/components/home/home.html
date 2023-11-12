@@ -15,6 +15,7 @@
     <app-signin-user id="login" *ngIf="!isAuth; else options"></app-signin-user>
     <ng-template id="menu" #options>
         <div [ngSwitch]="roleUser">
+            <div style="display: flex;justify-content: center;"><div style="margin-top: 15px;">{{nameUser}}</div></div>
             <div class="button-list" *ngSwitchCase="lstRoles[0]">
                 <button class="button-item" (click)="loadComponent('InsertUser')">
                     <img src="../../../assets/img/add_user_64.png" alt="new">
@@ -32,20 +33,21 @@
                   </button>
             </div>
             <div class="button-list" *ngSwitchCase="lstRoles[2]">
-                <button class="button-item" (click)="loadComponent('InsertUser')">
+                <!-- <button class="button-item" (click)="loadComponent('InsertUser')">
                     <img src="../../../assets/img/add_user_64.png" alt="new">
                   </button>
                   <button class="button-item" (click)="loadComponent('UpdateUser')">
                     <img src="../../../assets/img/edit_user_64.png" alt="edit">
-                  </button>
+                  </button> -->
+                  OPCIONES DEL PRESTAMISTA
             </div>
             <div class="button-list" *ngSwitchCase="lstRoles[3]">
-                <button class="button-item" (click)="loadComponent('InsertUser')">
-                    <img src="../../../assets/img/add_user_64.png" alt="new">
-                  </button>
-                  <button class="button-item" (click)="loadComponent('UpdateUser')">
+                <button class="button-item" (click)="loadComponent('InserRequestLoan')">
+                    <img src="../../../assets/img/add_request_loan_64.png" alt="new">
+                </button>
+                <!-- <button class="button-item" (click)="loadComponent('UpdateUser')">
                     <img src="../../../assets/img/edit_user_64.png" alt="edit">
-                  </button>
+                </button> -->
             </div>
         </div>
     </ng-template>

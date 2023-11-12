@@ -1,0 +1,34 @@
+
+<div class="registro-container modal-container ">
+        <form (ngSubmit)="insert()" class="modal-content" [formGroup]="myForm">
+            <div>
+                <h2>Número de cuenta</h2>
+            </div>
+        
+            <div class="form-group">  
+                <label>Banco: </label>
+                <select formControlName="id" [(ngModel)]="bankAccount.id" (change)="onSelectChange($event)">
+                    <option value="-1">Selecciona</option>
+                    <option *ngFor="let item of lstBankAccount" [value]="item.id">
+                        {{item.bankName}}
+                    </option>
+                </select>
+                <label for="numberAccount">Número:</label>
+                <input formControlName="numberAccountDisabled" type="text" id="numberAccountDisabled" name="numberAccountDisabled" readonly required>
+                <button type="button" (click)="selectAccount()" class="btn-seconday"><img src="../../../assets/img/credit_card_32.png" alt=""></button>
+            </div>
+        
+            <div class="form-group">
+                <label for="bankName">Otro Banco:</label>
+                <input formControlName="bankName" [(ngModel)]="bankAccount.bankName" type="text" id="bankName" name="bankName" required>
+                <label for="numberAccount">Número:</label>
+                <input type="text" formControlName="numberAccountReg" id="numberAccount" name="numberAccount" required>
+            </div>
+
+            <div style="display:flex;">
+                <button type="submit">Registrar</button>
+                <button type="button" (click)="closeDialog('btn-cerrar')" style="background-color:red;">Cerrar</button>
+            </div>
+        
+        </form>
+    </div>

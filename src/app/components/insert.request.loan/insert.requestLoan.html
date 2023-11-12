@@ -1,0 +1,41 @@
+<div class="registro-container">
+    <form (ngSubmit)="insert()" [formGroup]="myForm">
+        <div>
+            <div class="user-banner">
+                <span>Prestatario: {{nameUser}}</span>
+                <span>Tasa 20% (Mensual)</span>
+            </div>
+          <h2>Registro de Solicitud de Prestamo</h2>
+        </div>
+        <div class="form-group">
+          <label for="detail">Detalle:</label>
+          <textarea rows="4" cols="50" id="detail" name="detail" [(ngModel)]="requestLoanRegisterReq.detail" [ngModelOptions]="{standalone: true}" required>
+          </textarea>
+        </div>
+
+        <div class="form-group">
+            <label for="dirección">Días:</label>
+            <input formControlName="days" type="number" id="days" name="days" [(ngModel)]="requestLoanRegisterReq.days"  required>
+            <label for="requestedAmount">Monto:</label>
+            <input formControlName="requestedAmount" type="number" id="requestedAmount" name="requestedAmount" [(ngModel)]="requestLoanRegisterReq.requestedAmount"  (input)="onInputChange($event)" required>
+            <label for="interest">Interes:</label>
+            <input formControlName="interest" type="text" id="interest" name="interest" readonly required>
+            <label for="countNumber">Número de cuenta:</label>
+            <input formControlName="numberAccount"type="text" id="countNumber" name="countNumber" readonly required>
+            <button type="button" (click)="showDialog()" class="btn-seconday"><img src="../../../assets/img/credit_card_32.png" alt=""></button>
+          </div>
+  
+        <div class="form-group">
+          <label for="apeMat">Fecha de prestamo:</label>
+          <input type="date" id="loanStartDate" name="loanStartDate" [(ngModel)]="requestLoanRegisterReq.loanStartDate" [ngModelOptions]="{standalone: true}" [min]="now" required>
+          <label>Categoria de prestamo: </label>
+          <select [(ngModel)]="requestLoanRegisterReq.idLoanCat!.id" [ngModelOptions]="{standalone: true}">
+              <option value="-1">Selecciona</option>
+              <option *ngFor="let item of lstLoanCategory" [value]="item.id">
+                  {{item.nameLoanCat}}
+              </option>
+          </select>
+        </div>
+        <button type="submit">Registrar</button>
+      </form>
+    </div>

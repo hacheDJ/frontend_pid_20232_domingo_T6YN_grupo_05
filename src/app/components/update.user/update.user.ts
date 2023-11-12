@@ -24,7 +24,9 @@ export class UpdateUser {
   lstGroup:Group[] = [];
   lstUserLenderByGroup: UserListByRoleBossAndLenderRes[] = []
 
-  roleUser = parseInt(localStorage.getItem("ID_GROUP_USER") ?? "-1")
+  roleUser = localStorage.getItem("ROLE_USER")
+  idGroup = Number(localStorage.getItem("ID_GROUP_USER"))
+  idUser = Number(localStorage.getItem("ID_USER"))
   lstRoles: String[] = ["ADMIN", "LENDER_BOSS", "LENDER", "BORROWER"]
 
   myFormEdit: FormGroup
@@ -55,7 +57,7 @@ export class UpdateUser {
   
   objUser: User = {
     idGroup:{
-      id: this.roleUser
+      id: this.idGroup
     }
   };
 

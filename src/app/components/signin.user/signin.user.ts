@@ -40,6 +40,7 @@ export class SigninUserComponent implements OnInit{
         localStorage.setItem("TOKEN", d.token)
         localStorage.setItem("ROLE_USER", d.user.role)
         localStorage.setItem("ID_USER", d.user.id)
+        localStorage.setItem("NAME_USER", `${d.user.namesUser} ${d.user.lastnameP}`)
         localStorage.setItem("ID_GROUP_USER", d.user.idGroup)
 
         alert(d.message)

@@ -1,5 +1,5 @@
-<div class="registro-container">
-  <form (ngSubmit)="registerr()" [ngSwitch]="roleUser">
+<div class="registro-container" >
+  <form *ngIf="idGroupUser == 1 && roleUser == lstRoles[0] || idGroupUser != 1 && roleUser == lstRoles[1]" (ngSubmit)="registerr()" [ngSwitch]="roleUser">
       <div [ngSwitch]="roleUser">
         <h2 *ngSwitchCase="lstRoles[0]">Registro de Usuarios</h2>
         <h2 *ngSwitchCase="lstRoles[1]">Registrar prestamista al Grupo</h2>
@@ -63,5 +63,6 @@
   
       <button type="submit">Registrar</button>
     </form>
+    <div *ngIf="idGroupUser == 1 && roleUser == lstRoles[1]"><span>NO PERTENECES A NINGUN GRUPO, SOLICITA UNIRTE A UNO.</span></div>
   </div>
   

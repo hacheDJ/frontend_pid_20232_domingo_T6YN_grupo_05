@@ -11,6 +11,10 @@ import { InsertUser } from './components/insert.user/insert.user';
 import { Home } from './components/home/home';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AuthInterceptor } from 'src/security/AuthInterceptor';
+import { InserRequestLoan } from './components/insert.request.loan/insert.requestLoan';
+import { MatDialogModule, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { InsertBankAccount } from './components/insert.bank.account/insert.bank.account';
+import { OverlayModule } from '@angular/cdk/overlay';
 
 @NgModule({
   declarations: [
@@ -18,7 +22,9 @@ import { AuthInterceptor } from 'src/security/AuthInterceptor';
     Home,
     SigninUserComponent,
     UpdateUser,
-    InsertUser
+    InsertUser,
+    InserRequestLoan,
+    InsertBankAccount
   ],
   imports: [
     BrowserModule,
@@ -27,9 +33,14 @@ import { AuthInterceptor } from 'src/security/AuthInterceptor';
     ReactiveFormsModule.withConfig({warnOnNgModelWithFormControl: 'never'}),
     ApplicationModule,
     CommonModule,
-    HttpClientModule
+    HttpClientModule,
+    MatDialogModule,
+    
   ],
-  providers: [{provide:HTTP_INTERCEPTORS, useClass:AuthInterceptor, multi:true}],
+  providers: [
+    {provide:HTTP_INTERCEPTORS, useClass:AuthInterceptor, multi:true},
+
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
