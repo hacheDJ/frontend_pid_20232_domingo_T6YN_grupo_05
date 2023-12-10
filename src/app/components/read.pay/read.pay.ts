@@ -15,6 +15,9 @@ export class ReadPay {
 
   idUser = Number(localStorage.getItem("ID_USER"))
   idPortfolio = Number(localStorage.getItem("ID_PORTFOLIO"))
+
+  pageSize = 5
+  page = 1
   
   constructor(@Inject(MAT_DIALOG_DATA) public data: number, private payService: PayService, private matDialogRef: MatDialogRef<ReadPay>){
     this.payService.listByIdLoan(this.data).subscribe(res => this.lstPay = res)
