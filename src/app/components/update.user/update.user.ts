@@ -111,7 +111,7 @@ export class UpdateUser {
     dateBirdtInput: this.userRegisterReq.dateBirth
   } */
 
-  registerr(){
+/*   registerr(){
     this.userRegisterReq.registrationDate = new Date()
     this.userRegisterReq.updateDate = new Date()
 
@@ -120,7 +120,7 @@ export class UpdateUser {
         alert(item.message)
       }
     );
-  }
+  } */
 
   edit(){
     //this.userRegisterReq.registrationDate = new Date()

@@ -1,0 +1,54 @@
+<div class="registro-container modal-container" >
+    <form class="modal-content">
+        <div style="display: flex; justify-content: space-between;">
+          <h2>Pago de Cuota</h2>
+          <button type="button" class="btn-seconday" (click)="closeDialog('btn-close')">X</button>
+        </div>
+
+        <div class="form-group" style="justify-content: space-between; margin-bottom: 0px;">
+            <p>Prestamo:</p>
+            <p>{{ data.idLoan!.id }}</p>
+        </div>
+
+        <div class="form-group" style="justify-content: space-between; margin-bottom: 0px;">
+            <p>Prestatario:</p>
+            <p>{{ data.idLoan!.idBorrower!.namesUser }} {{ data.idLoan!.idBorrower!.lastnameP }} {{ data.idLoan!.idBorrower!.lastnameM }}</p>
+        </div>
+
+        <div class="form-group" style="justify-content: space-between; margin-bottom: 0px;">
+            <p>Cuota:</p>
+            <p>{{ data.fee }}</p>
+        </div>
+
+        <div class="form-group" style="justify-content: space-between; margin-bottom: 0px;">
+            <p>Monto:</p>
+            <p>{{ data.amount!.toFixed(2) }}</p>
+        </div>
+
+        <div class="form-group" style="justify-content: space-between; margin-bottom: 0px;">
+            <p>Fec. Vencimiento:</p>
+            <p>{{ data.dueDate }}</p>
+        </div>
+  
+        <div class="form-group" style="justify-content: space-between; margin-bottom: 0px;">
+            <p>Mora:</p>
+            <p>{{ arrear }}</p>
+        </div>
+
+        <div class="form-group" style="justify-content: space-between; margin-bottom: 0px;" *ngIf="data.state == 'PARTIAL'">
+            <p>Deuda parcial:</p>
+            <p>{{ data.remainingPartial }}</p>
+        </div>
+
+        <div class="form-group">
+            <label for="idLoan">Monto a pagar:</label>
+            <input type="text" id="idLoan" name="idLoan"  [(ngModel)]="payReq.amountToPay"  required>
+        </div>
+
+        <div class="form-group">
+          <button type="submit" (click)="update()" >Pagar</button>
+        </div>
+
+      </form>
+    </div>
+    

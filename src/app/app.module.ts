@@ -12,10 +12,17 @@ import { Home } from './components/home/home';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AuthInterceptor } from 'src/security/AuthInterceptor';
 import { InsertRequestLoan } from './components/insert.request.loan/insert.requestLoan';
-import { MatDialogModule, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { MatDialogModule } from '@angular/material/dialog';
 import { InsertBankAccount } from './components/insert.bank.account/insert.bank.account';
-import { OverlayModule } from '@angular/cdk/overlay';
 import { ReadRequestLoan } from './components/read.request.loan/read.request.loan';
+import { UpdateRequestLoan } from './components/update.request.loan/update.request.loan';
+import { ReadLoan } from './components/read.loan/read.loan';
+import { ReadPay } from './components/read.pay/read.pay';
+import { InsertPay } from './components/insert.pay/insert.pay';
+import { NgxPaginationModule } from 'ngx-pagination';
+import { DetailPay } from './components/detail.pay/detail.pay';
+import { LoanGroup } from './components/loan.group/loan.group';
+import { AdminLoanGroup } from './components/admin.loan.group/admin.loan.group';
 
 @NgModule({
   declarations: [
@@ -26,7 +33,14 @@ import { ReadRequestLoan } from './components/read.request.loan/read.request.loa
     InsertUser,
     InsertRequestLoan,
     InsertBankAccount,
-    ReadRequestLoan
+    ReadRequestLoan,
+    UpdateRequestLoan,
+    ReadLoan,
+    ReadPay,
+    InsertPay,
+    DetailPay,
+    LoanGroup,
+    AdminLoanGroup
   ],
   imports: [
     BrowserModule,
@@ -36,8 +50,8 @@ import { ReadRequestLoan } from './components/read.request.loan/read.request.loa
     ApplicationModule,
     CommonModule,
     HttpClientModule,
-    MatDialogModule
-    
+    MatDialogModule,
+    NgxPaginationModule
     
   ],
   providers: [

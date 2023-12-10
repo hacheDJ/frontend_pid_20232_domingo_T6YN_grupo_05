@@ -37,7 +37,7 @@ export class InsertUser {
     idGroup: {
       id: -1
     },
-    role: ""
+    role: "-1"
   };
 
   objUser: User = {};

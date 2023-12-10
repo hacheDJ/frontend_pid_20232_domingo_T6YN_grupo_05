@@ -7,7 +7,7 @@ import { Group } from '../models/group.model';
 import { LoanCategory } from '../models/loanCategory.model';
 import { User } from '../models/user.model';
 
-const ENPOINT_BASE = AppSettings.API_ENDPOINT;
+const ENDPOINT_BASE = AppSettings.API_ENDPOINT;
 
 @Injectable({
   providedIn: 'root'
@@ -17,19 +17,19 @@ export class UtilService {
   constructor(private http:HttpClient) { }
 
   listDocuments(): Observable<DocumentType[]>{
-    return this.http.get<DocumentType[]>(`${ENPOINT_BASE}/document`);
+    return this.http.get<DocumentType[]>(`${ENDPOINT_BASE}/document`);
   }
 
   listUserByRoleLenderBossAndLender(): Observable<User[]>{
-    return this.http.get<User[]>(`${ENPOINT_BASE}/admin/listUserByRole`);
+    return this.http.get<User[]>(`${ENDPOINT_BASE}/admin/listUserByRole`);
   }
 
   listGroups(): Observable<Group[]>{
-    return this.http.get<Group[]>(`${ENPOINT_BASE}/group`);
+    return this.http.get<Group[]>(`${ENDPOINT_BASE}/group`);
   }
 
   listLoanCategories(): Observable<LoanCategory[]>{
-    return this.http.get<LoanCategory[]>(`${ENPOINT_BASE}/loanCategory`);
+    return this.http.get<LoanCategory[]>(`${ENDPOINT_BASE}/loanCategory`);
   }
 
 }

@@ -2,6 +2,8 @@ import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { Observable } from "rxjs";
 import { AppSettings } from "../app.settings";
+import { UserListByRoleBossAndLenderRes } from "../dtos/UserListByRoleBossAndLenderRes.dto";
+import { UserSigninRes } from "../dtos/UserSigninRes.dto";
 import { UserToEditReq } from "../dtos/UserToEditReq.dto";
 import { User } from "../models/user.model";
 
@@ -29,6 +31,14 @@ export class UserService {
 
     findUserLenderToEditByGroup(data: UserToEditReq): Observable<any> {
         return this.httpClient.post(`${adminUrl}/listUserByRoleForUpdateLender`, data);
+    }
+
+    listByIdPortfolio(idPortfolio: number): Observable<UserSigninRes[]>{
+        return this.httpClient.get<UserSigninRes[]>(`${adminUrl}/listBorrowerByPortfolioClient/${idPortfolio}`)
+    }
+
+    listByRoleLenderBoss(): Observable<UserListByRoleBossAndLenderRes[]>{
+        return this.httpClient.get<UserListByRoleBossAndLenderRes[]>(`${adminUrl}/listByRoleLenderBoss`)
     }
 
 }

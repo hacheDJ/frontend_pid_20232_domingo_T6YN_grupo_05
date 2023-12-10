@@ -1,0 +1,65 @@
+<div class="registro-container" >
+    <form>
+        <div>
+          <h2>Consulta de Cuotas</h2>
+        </div>
+
+        <div class="form-group">
+          <!-- <label for="start">Desde:</label>
+          <input type="date" id="start" name="start" required>
+          <label for="end">Hasta:</label>
+          <input type="date" id="end" name="end"  required> -->
+
+          <label>Prestamista:</label>
+          <select (change)="onSelectChange($event)">
+            <option value="-1">Selecciona</option>
+            <option *ngFor="let item of lstLender" [value]="item.id">
+                {{item.nameComplete}}
+            </option>
+          </select>
+
+          <!-- <button type="submit" >Filtrar</button> -->
+        </div>
+  
+        <div class="form-group">
+          <table class="custom-table">
+            <thead>
+              <tr>
+                <th>Prestamo</th>
+                <th>Prestatario</th>
+                <th>Monto prestado</th>
+                <th>Monto con intereses</th>
+                <th>Mora generada</th>
+                <th>Cuotas</th>
+                <th>C. Pagadas</th>
+                <th>C. Parciales</th>
+                <th>C. Pendientes</th>
+                <th>M. Pagado</th>
+                <th>M. Parcial pagado</th>
+                <th>M. Parcial pendiente por pagar</th>
+                <th>M. Pendiente</th>
+              </tr>
+            </thead>
+            <tbody >
+              <tr *ngFor="let item of lstDetailLoan">
+                <td>{{ item.loan }}</td>
+                <td>{{ item.borrower }} </td>
+                <td>{{ item.borrowedAmount }}</td>
+                <td>{{ item.borrowedAmountWithInterests }}</td>
+                <td>{{ item.arrearGenerate }}</td>
+                <td>{{ item.quotas }}</td>
+                <td>{{ item.quPaid }}</td>
+                <td>{{ item.quPartial }} </td>
+                <td>{{ item.quPending }}</td>
+                <td>{{ item.amPaid == null ? 0 : item.amPaid }}</td>
+                <td>{{ item.amPartialPaid == null ? 0 : item.amPartialPaid }}</td>
+                <td>{{ item.amPartialPendingToPaid == null ? 0 : item.amPartialPendingToPaid }}</td>
+                <td>{{ item.amPending }}</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+      </form>
+    </div>
+    

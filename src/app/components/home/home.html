@@ -23,6 +23,9 @@
                   <button class="button-item" (click)="loadComponent('UpdateUser')">
                     <img src="../../../assets/img/edit_user_64.png" alt="edit">
                   </button>
+                  <button class="button-item" (click)="loadComponent('AdminLoanGroup')">
+                    <img src="../../../assets/img/performance_64.png" alt="performance">
+                  </button>
             </div>
             <div class="button-list" *ngSwitchCase="lstRoles[1]">
                 <button class="button-item" (click)="loadComponent('InsertUser')">
@@ -31,23 +34,26 @@
                   <button class="button-item" (click)="loadComponent('UpdateUser')">
                     <img src="../../../assets/img/edit_user_from_team_64.png" alt="edit">
                   </button>
+                  <button class="button-item" (click)="loadComponent('LoanGroup')">
+                    <img src="../../../assets/img/quota_64.png" alt="quota">
+                  </button>
             </div>
             <div class="button-list" *ngSwitchCase="lstRoles[2]">
                  <button class="button-item" (click)="loadComponent('ReadRequestLoan')">
                     <img src="../../../assets/img/approve_64.png" alt="new">
                   </button>
-                  <!-- <button class="button-item" (click)="loadComponent('UpdateUser')">
-                    <img src="../../../assets/img/edit_user_64.png" alt="edit">
-                  </button> -->
+                  <button class="button-item" (click)="loadComponent('InsertPay')">
+                    <img src="../../../assets/img/pay_64.png" alt="new_pay">
+                  </button>
                   
             </div>
             <div class="button-list" *ngSwitchCase="lstRoles[3]">
                 <button class="button-item" (click)="loadComponent('InsertRequestLoan')">
                     <img src="../../../assets/img/add_request_loan_64.png" alt="new">
                 </button>
-                <!-- <button class="button-item" (click)="loadComponent('UpdateUser')">
-                    <img src="../../../assets/img/edit_user_64.png" alt="edit">
-                </button> -->
+                <button class="button-item" (click)="loadComponent('ReadLoan')">
+                    <img src="../../../assets/img/review_loan_64.png" alt="read">
+                </button>
             </div>
         </div>
     </ng-template>
