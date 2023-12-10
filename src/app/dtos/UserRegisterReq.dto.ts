@@ -1,5 +1,6 @@
 import { DocumentType } from "../models/documentType.model";
 import { Group } from "../models/group.model";
+import { PortfolioClient } from "../models/portfolioClient";
 
 export class UserRegisterReq {
     id?: number;
@@ -18,5 +19,6 @@ export class UserRegisterReq {
     idDocType?: DocumentType;
     updateDate?: Date;
     idGroup?: Group;
+    idPortfolio?: PortfolioClient;
     role?: String;
 }

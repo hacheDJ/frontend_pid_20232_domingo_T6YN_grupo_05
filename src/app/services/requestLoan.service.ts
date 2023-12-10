@@ -2,11 +2,13 @@ import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { Observable } from "rxjs";
 import { AppSettings } from "../app.settings";
+import { LoanDetailByLenderRes } from "../dtos/LoanDetailByLenderRes.dto";
 import { RequestLoanRegisterReq } from "../dtos/RequestLoanRegisterReq.dto";
+import { RequestLoanUpdateReq } from "../dtos/RequestLoanUpdateReq.dto";
 import { RequestLoan } from "../models/requestLoan.model";
 
 
-const requestLoanUrl = `${AppSettings.API_ENDPOINT}/admin/registerRequestLoanByBorrower`;
+const requestLoanUrl = `${AppSettings.API_ENDPOINT}/requestLoan`;
 
 @Injectable({
     providedIn:"root"
@@ -20,5 +22,36 @@ export class RequestLoanService {
         return this.httpClient.post(requestLoanUrl, data)
     }
 
+    listByLender(idPortfolio: number): Observable<RequestLoan[]>{
+        return this.httpClient.get<RequestLoan[]>(`${requestLoanUrl}/listByLender/${idPortfolio}`)
+    }
+
+    listByRegistrationDateRange(start: Date, end: Date, idPortfolio: number): Observable<RequestLoan[]>{
+        return this.httpClient.get<RequestLoan[]>(`${requestLoanUrl}/listByRegistrationDateRange/${start}/${end}/${idPortfolio}`)
+    }
+
+    listByIdBorrower(id: number): Observable<RequestLoan[]>{
+        return this.httpClient.get<RequestLoan[]>(`${requestLoanUrl}/listByIdBorrower/${id}`)
+    }
+
+    updateCanceledStatus(data: RequestLoanUpdateReq): Observable<any> {
+        return this.httpClient.patch(`${requestLoanUrl}/updateCanceledStatus`, data)
+    }
+
+    updateApproveStatus(data: RequestLoanUpdateReq): Observable<any> {
+        return this.httpClient.post(`${requestLoanUrl}/updateApproveStatus`, data)
+    }
+
+    listByRegistrationDateRangeAndState(start: Date, end: Date, state: string, idBorrower: number, idPortfolio: number): Observable<RequestLoan[]>{
+        return this.httpClient.get<RequestLoan[]>(`${requestLoanUrl}/listByRegistrationDateRangeAndState/${start}/${end}/${state}/${idBorrower}/${idPortfolio}`)
+    }
+
+    listLoanByBorrower(idPortfolio: number, idBorrower: number): Observable<RequestLoan[]>{
+        return this.httpClient.get<RequestLoan[]>(`${requestLoanUrl}/listLoanByBorrower/${idPortfolio}/${idBorrower}`)
+    }
+
+    listLoanDetailByLender(idLender: number): Observable<LoanDetailByLenderRes[]>{
+        return this.httpClient.get<LoanDetailByLenderRes[]>(`${requestLoanUrl}/listLoanDetailByLender/${idLender}`)
+    }
 
 }

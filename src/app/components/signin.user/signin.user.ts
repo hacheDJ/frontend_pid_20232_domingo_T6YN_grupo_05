@@ -42,6 +42,7 @@ export class SigninUserComponent implements OnInit{
         localStorage.setItem("ID_USER", d.user.id)
         localStorage.setItem("NAME_USER", `${d.user.namesUser} ${d.user.lastnameP}`)
         localStorage.setItem("ID_GROUP_USER", d.user.idGroup)
+        localStorage.setItem("ID_PORTFOLIO", d.user.idPortfolio)
 
         alert(d.message)
         window.location.reload()

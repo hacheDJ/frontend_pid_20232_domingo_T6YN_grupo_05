@@ -1,0 +1,69 @@
+<div class="registro-container" >
+    <form>
+        <div>
+          <h2>Registro de pagos</h2>
+        </div>
+
+        <div class="form-group">
+          <label for="nombre">Prestatario:</label>
+          <select (change)="onSelectChange1($event)">
+            <option value="-1">Selecciona</option>
+            <option *ngFor="let item of lstBorrower" [value]="item.id">
+                {{item.namesUser}} {{item.lastnameP}} {{item.lastnameM}}
+            </option>
+        </select>
+        </div>
+
+        <div class="form-group">
+            <label>Prestamo:</label>
+            <select (change)="onSelectChange2($event)" [(ngModel)]="selectLoan" [ngModelOptions]="{standalone: true}">
+              <option value="-1">Selecciona</option>
+              <option *ngFor="let item of lstLoan" [value]="item.id">
+                  {{item.detail}}
+              </option>
+          </select>
+        </div>
+  
+        <div class="form-group">
+          <label>Estado:</label>
+          <select [(ngModel)]="selectState" [ngModelOptions]="{standalone: true}">
+            <option value="-1">Selecciona</option>
+            <option value="PENDING">Pendiente</option>
+            <option value="PAID">Pagado</option>
+            <option value="PARTIAL">Parcial</option>
+          </select>
+          <button type="submit" (click)="search()">Filtrar</button>
+        </div>
+  
+        <div class="form-group" style="flex-direction: column; align-items: flex-start;">
+            <table class="custom-table">
+                <thead>
+                  <tr>
+                    <th>Prestamo</th>
+                    <th>Cuota</th>
+                    <th>Monto</th>
+                    <th>Fec. vencimiento</th>
+                    <th>Estado</th>
+                    <th>Mora</th>
+                  </tr>
+                </thead>
+                <tbody >
+                  <tr *ngFor="let item of lstPay | paginate: {itemsPerPage: pageSize, currentPage: page}">
+                    <td>{{ item.idLoan!.id }}</td>
+                    <td>{{ item.fee }}</td>
+                    <td>{{ item.amount!.toFixed(2) }}</td>
+                    <td>{{ item.dueDate }}</td>
+                    <!-- <td [ngClass]="{'state-approve': item.state == 'APPROVE', 'state-pending': item.state == 'PENDING', 'state-cancelled': item.state == 'CANCELLED'}">{{ item.state }}</td> -->
+                    <td>{{ item.state }}</td>
+                    <td>{{ item.arrear }}</td>
+                    <!-- <td><button type="button" (click)="showDialog(item)">Ver</button></td>  -->
+                    <td *ngIf="item.state != 'PAID'"><button type="button" (click)="showDialog(item)">Pagar</button></td>
+                  </tr>
+                </tbody>
+            </table>
+            <pagination-controls class="my-pagination" (pageChange)="page = $event"></pagination-controls>
+        </div>
+
+      </form>
+    </div>
+    

@@ -1,5 +1,5 @@
 <div class="registro-container">
-    <div [formGroup]="myFormEdit" [ngSwitch]="roleUser">
+    <div [formGroup]="myFormEdit" [ngSwitch]="roleUser" *ngIf="idGroup == 1 && roleUser == lstRoles[0] || idGroup != 1 && roleUser == lstRoles[1]">
         <h2 *ngSwitchCase="lstRoles[0]">Editar Usuario</h2>
         <h2 *ngSwitchCase="lstRoles[1]">Editar Prestamistas de mi Grupo</h2>
         <div class="form-group">
@@ -70,6 +70,9 @@
         </div>
     
         <button type="submit" (click)="edit()">Editar</button>
+      </div>
+      <div *ngIf="idGroup == 1 && roleUser == lstRoles[1]">
+        <span>NO TIENES GRUPO PARA QUE PUEDAS ACTUALIZAR A LOS INTEGRANTES</span>
       </div>
     </div>
     

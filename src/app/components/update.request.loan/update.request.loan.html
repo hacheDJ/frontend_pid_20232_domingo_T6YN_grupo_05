@@ -1,0 +1,24 @@
+
+<div class="registro-container modal-container ">
+    <div  class="modal-content">
+        <div style="display:flex;justify-content:space-between;">
+            <h3>Prestatario: {{ data.idBorrower!.namesUser }} {{ data.idBorrower!.lastnameP }} {{ data.idBorrower!.lastnameM }}</h3>
+            <button type="button" (click)="closeDialog('btn-close')" style="background-color:red;width:10%">X</button>
+        </div>
+        <div>
+            <h3>Prestamista: {{ nameUser }}</h3>
+            <p>Monto: {{ data.requestedAmount!.toFixed(2) }}</p>
+            <p>Interes: {{ interest }}</p>
+            <p>Tasa diaria: {{ (dailyRate*100).toFixed(2)+"%" }}</p>
+            <p>Cuota diaria: {{ dailyQuota }}</p>
+            <p>Detalle de solicitud: {{ data.detail! }}</p>
+            <p>Inicio: {{ data.loanStartDate }}</p>
+        </div>
+
+        <div style="display:flex;" *ngIf="data.state == 'PENDING'">
+            <button type="submit" (click)="approve()">Aprobar</button>
+            <button type="submit" style="background-color:orange" (click)="cancel()">Rechazar</button>
+        </div>
+    
+    </div>
+</div>

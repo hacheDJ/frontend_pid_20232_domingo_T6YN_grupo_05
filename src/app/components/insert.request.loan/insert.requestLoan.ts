@@ -85,8 +85,9 @@ export class InsertRequestLoan{
     let reqAmo = this.myForm.get("requestedAmount")?.value
     let dailyRate = Math.pow((1+0.2), (1/30))-1
     let days = this.myForm.get("days")?.value
+    let interest = reqAmo * ((Math.pow((1+dailyRate), days))-1)
 
-    this.myForm.get("interest")?.setValue((reqAmo * dailyRate * days).toFixed(2))
+    this.myForm.get("interest")?.setValue(interest.toFixed(2))
   }
 
 
@@ -102,4 +103,6 @@ export class InsertRequestLoan{
       
     });
   }
+
+  
 }

@@ -15,7 +15,7 @@
 
         <div class="form-group">
             <label for="dirección">Días:</label>
-            <input formControlName="days" type="number" id="days" name="days" [(ngModel)]="requestLoanRegisterReq.days"  required>
+            <input formControlName="days" type="number" id="days" name="days" [(ngModel)]="requestLoanRegisterReq.days"  (input)="onInputChange($event)" required>
             <label for="requestedAmount">Monto:</label>
             <input formControlName="requestedAmount" type="number" id="requestedAmount" name="requestedAmount" [(ngModel)]="requestLoanRegisterReq.requestedAmount"  (input)="onInputChange($event)" required>
             <label for="interest">Interes:</label>

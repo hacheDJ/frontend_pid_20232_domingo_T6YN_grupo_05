@@ -1,24 +1,23 @@
 <div class="registro-container" >
     <form>
         <div>
-          <h2>Consulta de Solicitudes de Prestamos</h2>
-        </div>
-
-        <div class="form-group">
-          <label for="nombre">Prestatario:</label>
-          <select (change)="onSelectChange($event)">
-            <option value="-1">Selecciona</option>
-            <option *ngFor="let item of lstBorrower" [value]="item.id">
-                {{item.namesUser}} {{item.lastnameP}} {{item.lastnameM}}
-            </option>
-        </select>
+          <h2>Consulta de Prestamos</h2>
         </div>
   
         <div class="form-group">
           <label for="start">Desde:</label>
-          <input type="date" id="start" name="start" [(ngModel)]="requestLoanSearch.start" required>
+          <input type="date" id="start" name="start" [(ngModel)]="requestLoanSearch.start" [ngModelOptions]="{standalone: true}" required>
           <label for="end">Hasta:</label>
-          <input type="date" id="end" name="end" [(ngModel)]="requestLoanSearch.end" required>
+          <input type="date" id="end" name="end" [(ngModel)]="requestLoanSearch.end" [ngModelOptions]="{standalone: true}" required>
+
+          <label>Estado:</label>
+          <select [(ngModel)]="requestLoanSearch.state" [ngModelOptions]="{standalone: true}">
+            <option value="-1">Selecciona</option>
+            <option value="PENDING">Pendiente</option>
+            <option value="CANCELLED">Cancelado</option>
+            <option value="APPROVE">Aprobado</option>
+        </select>
+
           <button type="submit" (click)="search()">Filtrar</button>
         </div>
   
@@ -38,11 +37,11 @@
               <tr *ngFor="let item of lstRequestLoan">
                 <td>{{ item.id }}</td>
                 <td>{{ item.idBorrower!.namesUser }} {{ item.idBorrower!.lastnameP }} {{ item.idBorrower!.lastnameM }}</td>
-                <td>{{ item.requestedAmount }}</td>
+                <td>{{ item.requestedAmount!.toFixed(2) }}</td>
                 <td [ngClass]="{'state-approve': item.state == 'APPROVE', 'state-pending': item.state == 'PENDING', 'state-cancelled': item.state == 'CANCELLED'}">{{ item.state }}</td>
                 <td>{{ item.registrationDate }}</td>
                 <td>{{ item.idLoanCat!.nameLoanCat }}</td>
-                <td><button type="button" (click)="showDialog(item)">Ver</button></td>
+                <td><button type="button" (click)="showDialog(item.id!)" *ngIf="item.state == 'APPROVE'">Ver Cuotas</button></td> 
               </tr>
             </tbody>
           </table>
