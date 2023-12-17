@@ -23,6 +23,7 @@ import { NgxPaginationModule } from 'ngx-pagination';
 import { DetailPay } from './components/detail.pay/detail.pay';
 import { LoanGroup } from './components/loan.group/loan.group';
 import { AdminLoanGroup } from './components/admin.loan.group/admin.loan.group';
+import { PdfComponent } from './pdf/pdf.component';
 
 @NgModule({
   declarations: [
@@ -40,7 +41,8 @@ import { AdminLoanGroup } from './components/admin.loan.group/admin.loan.group';
     InsertPay,
     DetailPay,
     LoanGroup,
-    AdminLoanGroup
+    AdminLoanGroup,
+    PdfComponent
   ],
   imports: [
     BrowserModule,

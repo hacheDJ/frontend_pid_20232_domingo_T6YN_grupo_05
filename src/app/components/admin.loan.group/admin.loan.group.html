@@ -12,45 +12,51 @@
                 {{item.nameComplete}}
             </option>
           </select>
+          <div class="frame">
+            <p style="font-weight: bold;">{{ totalRentability +"%"}}</p>
+          </div>
         </div>
   
-        <div class="form-group">
+        <div class="form-group" style="display: flex; flex-direction: column;">
           <table class="custom-table">
             <thead>
               <tr>
-                <th>Prestamo</th>
-                <th>Prestatario</th>
+                <th>Prestamista</th>
                 <th>Monto prestado</th>
-                <th>Monto con intereses</th>
-                <th>Mora generada</th>
-                <th>Cuotas</th>
-                <th>C. Pagadas</th>
-                <th>C. Parciales</th>
-                <th>C. Pendientes</th>
-                <th>M. Pagado</th>
-                <th>M. Parcial pagado</th>
-                <th>M. Parcial pendiente por pagar</th>
-                <th>M. Pendiente</th>
+                <th>Monto pagado</th>
+                <th>Monto pendiente</th>
+                <th>Rentabilidad</th>
               </tr>
             </thead>
             <tbody >
-              <tr *ngFor="let item of lstDetailLoan">
-                <td>{{ item.loan }}</td>
-                <td>{{ item.borrower }} </td>
-                <td>{{ item.borrowedAmount }}</td>
-                <td>{{ item.borrowedAmountWithInterests }}</td>
-                <td>{{ item.arrearGenerate }}</td>
-                <td>{{ item.quotas }}</td>
-                <td>{{ item.quPaid }}</td>
-                <td>{{ item.quPartial }} </td>
-                <td>{{ item.quPending }}</td>
-                <td>{{ item.amPaid == null ? 0 : item.amPaid }}</td>
-                <td>{{ item.amPartialPaid == null ? 0 : item.amPartialPaid }}</td>
-                <td>{{ item.amPartialPendingToPaid == null ? 0 : item.amPartialPendingToPaid }}</td>
-                <td>{{ item.amPending }}</td>
+              <tr *ngFor="let item of lstReviewFinancialPerformance | paginate: {itemsPerPage: pageSize, currentPage: page}">
+                <td>{{ item.lender }}</td>
+                <td>{{ item.borrowed }} </td>
+                <td>{{ item.paid }}</td>
+                <td>{{ item.pending }}</td>
+                <td>{{ item.rentability +"%"}}</td>
               </tr>
             </tbody>
           </table>
+          <pagination-controls class="my-pagination" (pageChange)="page = $event" style="align-self: flex-start;"></pagination-controls>
+          
+          <table class="custom-table" style="margin-top: 10px;">
+              <tr>
+                <th></th>
+                <th>Prestado</th>
+                <th>Pagado</th>
+                <th>Pendiente</th>
+                <th>Rentabilidad</th>
+              </tr>
+              <tr>
+                <td style="font-weight: bold;">Total</td>
+                <td>{{ "S/. "+totalBorrowed }}</td>
+                <td>{{ "S/. "+totalPaid }}</td>
+                <td>{{ "S/. "+totalPending }}</td>
+                <td>{{ totalRentability +"%"}}</td>
+              </tr>
+          </table>
+         
         </div>
 
       </form>

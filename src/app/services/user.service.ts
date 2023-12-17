@@ -2,6 +2,7 @@ import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { Observable } from "rxjs";
 import { AppSettings } from "../app.settings";
+import { FindByIdRes } from "../dtos/find.by.id.res";
 import { UserListByRoleBossAndLenderRes } from "../dtos/UserListByRoleBossAndLenderRes.dto";
 import { UserSigninRes } from "../dtos/UserSigninRes.dto";
 import { UserToEditReq } from "../dtos/UserToEditReq.dto";
@@ -39,6 +40,10 @@ export class UserService {
 
     listByRoleLenderBoss(): Observable<UserListByRoleBossAndLenderRes[]>{
         return this.httpClient.get<UserListByRoleBossAndLenderRes[]>(`${adminUrl}/listByRoleLenderBoss`)
+    }
+
+    findById(id: number): Observable<FindByIdRes>{
+        return this.httpClient.get<FindByIdRes>(`${adminUrl}/findById/${id}`)
     }
 
 }
