@@ -5,6 +5,7 @@ import { AppSettings } from "../app.settings";
 import { LoanDetailByLenderRes } from "../dtos/LoanDetailByLenderRes.dto";
 import { RequestLoanRegisterReq } from "../dtos/RequestLoanRegisterReq.dto";
 import { RequestLoanUpdateReq } from "../dtos/RequestLoanUpdateReq.dto";
+import { ReviewFinancialPerformanceRes } from "../dtos/review.financial.performance.res";
 import { RequestLoan } from "../models/requestLoan.model";
 
 
@@ -52,6 +53,10 @@ export class RequestLoanService {
 
     listLoanDetailByLender(idLender: number): Observable<LoanDetailByLenderRes[]>{
         return this.httpClient.get<LoanDetailByLenderRes[]>(`${requestLoanUrl}/listLoanDetailByLender/${idLender}`)
+    }
+
+    reviewFinancialPerformance(idGroup: number): Observable<ReviewFinancialPerformanceRes[]>{
+        return this.httpClient.get<ReviewFinancialPerformanceRes[]>(`${requestLoanUrl}/reviewFinancialPerformance/${idGroup}`)
     }
 
 }

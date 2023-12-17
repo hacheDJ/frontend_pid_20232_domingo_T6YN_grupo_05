@@ -1,16 +1,11 @@
 import { Component } from '@angular/core';
-import { MatDialog } from '@angular/material/dialog';
-import { LoanDetailByLenderRes } from 'src/app/dtos/LoanDetailByLenderRes.dto';
-import { RequestLoanSearch } from 'src/app/dtos/RequestLoanSearch.dto';
+import { ReviewFinancialPerformanceRes } from 'src/app/dtos/review.financial.performance.res';
 import { UserListByRoleBossAndLenderRes } from 'src/app/dtos/UserListByRoleBossAndLenderRes.dto';
-import { UserSigninRes } from 'src/app/dtos/UserSigninRes.dto';
-import { UserToEditReq } from 'src/app/dtos/UserToEditReq.dto';
-import { RequestLoan } from 'src/app/models/requestLoan.model';
-import { User } from 'src/app/models/user.model';
 import { RequestLoanService } from 'src/app/services/requestLoan.service';
 import { UserService } from 'src/app/services/user.service';
-import { ReadPay } from '../read.pay/read.pay';
-import { UpdateRequestLoan } from '../update.request.loan/update.request.loan';
+/* import pdfMake from 'pdfmake/build/pdfmake';
+import pdfFonts from 'pdfmake/build/vfs_fonts';
+pdfMake.vfs = pdfFonts.pdfMake.vfs; */
 
 
 @Component({
@@ -20,28 +15,56 @@ import { UpdateRequestLoan } from '../update.request.loan/update.request.loan';
 })
 export class AdminLoanGroup {
   lstLenderBoss: UserListByRoleBossAndLenderRes[] = []
-  lstDetailLoan: LoanDetailByLenderRes[] = []
+  lstReviewFinancialPerformance: ReviewFinancialPerformanceRes[] = []
 
-  userToeditReq: UserToEditReq = {
-    idGroup: {
-        id: Number(localStorage.getItem("ID_GROUP_USER"))
-    }
-  }
+  pageSize = 4
+  page = 1
+
+  totalBorrowed = 0
+  totalPaid = 0
+  totalPending = 0
+  totalRentability = 0
+
+  //pdfMake.vfs = pdfFonts.pdfMake.vfs
 
   constructor(private userService: UserService, private requestLoanService: RequestLoanService){
     this.userService.listByRoleLenderBoss().subscribe(res => this.lstLenderBoss = res)
   }
 
   onSelectChange(event: any){
-    console.log("EVENT", event.target.value);
-    let idLender = event.target.value
+    console.log("ID_USER_LENDER_BOSS", event.target.value);
+    let idLenderBoss = event.target.value
 
-    this.requestLoanService.listLoanDetailByLender(idLender).subscribe(
-      res =>{ this.lstDetailLoan = res
-        console.log("detail -> ", this.lstDetailLoan)
+    this.userService.findById(idLenderBoss).subscribe(res => {
+      if(res.err){
+          alert(res.msg)
+      }else{
+        const idGroup = res.user!.idGroup!.id!
+        
+        this.requestLoanService.reviewFinancialPerformance(idGroup).subscribe(
+          res => {
+            this.lstReviewFinancialPerformance = res
+            
+            this.totalBorrowed = 0
+            this.totalPaid = 0
+            this.totalPending = 0
+            this.totalRentability = 0
+
+            if(this.lstReviewFinancialPerformance.length != 0){
+              this.lstReviewFinancialPerformance.forEach(value => {
+                console.log("ITEM------>",value)
+                this.totalBorrowed += value.borrowed!
+                this.totalPaid += value.paid!
+                this.totalPending += value.pending!
+                this.totalRentability += value.rentability!
+              })
+            }
+          }
+        )
       }
-      
-    )
+    })
+
+   
 
     
     

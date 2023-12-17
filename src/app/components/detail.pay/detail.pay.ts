@@ -1,15 +1,10 @@
-import { Component, Inject, ViewChild } from '@angular/core';
-import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { Component, Inject } from '@angular/core';
+import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { PayReq } from 'src/app/dtos/PayReq.dto';
-import { RequestLoanSearch } from 'src/app/dtos/RequestLoanSearch.dto';
-import { UserSigninRes } from 'src/app/dtos/UserSigninRes.dto';
 import { Pay } from 'src/app/models/pay.model';
-import { RequestLoan } from 'src/app/models/requestLoan.model';
 import { User } from 'src/app/models/user.model';
 import { PayService } from 'src/app/services/pay.service';
-import { RequestLoanService } from 'src/app/services/requestLoan.service';
-import { UserService } from 'src/app/services/user.service';
-import { UpdateRequestLoan } from '../update.request.loan/update.request.loan';
+
 
 
 @Component({
@@ -23,7 +18,7 @@ export class DetailPay {
 
   amount = this.data.amount!
   dailyRate = Math.pow((1+0.2), (1/30))-1
-  daysLate = Math.floor((new Date("2023-12-15").getTime() - new Date(this.dueDate).getTime()) / (1000*60*60*24)) <= 0 ? 0 : Math.floor((new Date("2023-12-15").getTime() - new Date(this.dueDate).getTime()) / (1000*60*60*24))
+  daysLate = Math.floor((new Date("2023-12-30").getTime() - new Date(this.dueDate).getTime()) / (1000*60*60*24)) <= 0 ? 0 : Math.floor((new Date("2023-12-30").getTime() - new Date(this.dueDate).getTime()) / (1000*60*60*24))
 
   arrear = (this.data.state === "PENDING") ? (this.amount * ((Math.pow((1 + this.dailyRate), this.daysLate)) - 1)).toFixed(2) : this.data.arrear
   

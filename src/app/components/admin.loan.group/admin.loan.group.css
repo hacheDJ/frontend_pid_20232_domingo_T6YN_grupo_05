@@ -78,3 +78,14 @@
     /* color: #fff; */
     font-weight: bold;
   }
+
+  .frame{
+    border: var(--terciary-c) solid 1px;
+    margin-left: 10px;
+    padding: 5px;
+    border-radius: 5px;
+  }
+
+  .my-pagination ::ng-deep .ngx-pagination .current {
+    background: var(--terciary-c);
+  }
